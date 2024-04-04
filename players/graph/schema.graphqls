@@ -1,0 +1,8 @@
+type Player {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  listPlayers: [Player!]!
+}

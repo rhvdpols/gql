@@ -1,0 +1,13 @@
+type Leaderboard {
+  rankings: [Ranking]
+}
+
+type Ranking {
+  rank: Int!
+  player: Player!
+  points: Int!
+}
+
+type Player {
+  id: ID!
+}

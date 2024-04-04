@@ -1,0 +1,32 @@
+type Game {
+  id: ID!
+  name: String!
+  leaderboard: Leaderboard!
+}
+
+type Player {
+  id: ID!
+  name: String!
+  profile: Profile!
+  rankings: [Ranking]
+}
+
+type Profile {
+  bio: String!
+}
+
+type Leaderboard {
+  rankings: [Ranking]
+}
+
+type Ranking {
+  rank: Int!
+  player: Player!
+  points: Int!
+}
+
+type Query {
+  listGames: [Game!]!
+  game(id: ID!): Game
+  listPlayers: [Player!]!
+}
