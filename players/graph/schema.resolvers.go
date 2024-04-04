@@ -6,14 +6,13 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/rhvdpols/gql/players/graph/model"
 )
 
 // ListPlayers is the resolver for the listPlayers field.
 func (r *queryResolver) ListPlayers(ctx context.Context) ([]*model.Player, error) {
-	panic(fmt.Errorf("not implemented: ListPlayers - listPlayers"))
+	return r.Players, nil
 }
 
 // Query returns QueryResolver implementation.

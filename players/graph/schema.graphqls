@@ -1,6 +1,11 @@
-type Player {
+type Player @key(fields: "id") {
   id: ID!
   name: String!
+  profile: Profile!
+}
+
+type Profile {
+  bio: String!
 }
 
 type Query {

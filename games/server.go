@@ -19,12 +19,10 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{Games: []*model.Game{{ID: "1", Name: "Game 1"},
-		{ID: "2", Name: "MARIO KART"},
-		{ID: "3", Name: "Game 3"},
-		{ID: "4", Name: "Game 4"},
-		{ID: "5", Name: "Game 5"},
-		{ID: "6", Name: "Game 6"}}}}))
+	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{Games: []*model.Game{
+		{ID: "1", Name: "Mario Kart"},
+		{ID: "2", Name: "Super Mario Bros"},
+	}}}))
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	http.Handle("/query", srv)

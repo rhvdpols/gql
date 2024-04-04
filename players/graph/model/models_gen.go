@@ -3,8 +3,15 @@
 package model
 
 type Player struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID      string   `json:"id"`
+	Name    string   `json:"name"`
+	Profile *Profile `json:"profile"`
+}
+
+func (Player) IsEntity() {}
+
+type Profile struct {
+	Bio string `json:"bio"`
 }
 
 type Query struct {

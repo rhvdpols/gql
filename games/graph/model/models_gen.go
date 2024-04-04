@@ -7,5 +7,7 @@ type Game struct {
 	Name string `json:"name"`
 }
 
+func (Game) IsEntity() {}
+
 type Query struct {
 }

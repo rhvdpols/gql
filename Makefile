@@ -12,6 +12,8 @@ up: down
 	go run ./games &
 	go run ./players &
 	go run ./leaderboards &
+	cd router && \
+	  npm run start
 
 mono: down
 	go run ./monolith &

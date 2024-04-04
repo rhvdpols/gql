@@ -2,6 +2,13 @@
 
 package model
 
+type Game struct {
+	ID          string       `json:"id"`
+	Leaderboard *Leaderboard `json:"leaderboard"`
+}
+
+func (Game) IsEntity() {}
+
 type Leaderboard struct {
 	Rankings []*Ranking `json:"rankings,omitempty"`
 }
@@ -9,6 +16,8 @@ type Leaderboard struct {
 type Player struct {
 	ID string `json:"id"`
 }
+
+func (Player) IsEntity() {}
 
 type Query struct {
 }

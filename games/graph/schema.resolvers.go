@@ -6,19 +6,13 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/rhvdpols/gql/games/graph/model"
 )
 
 // ListGames is the resolver for the listGames field.
 func (r *queryResolver) ListGames(ctx context.Context) ([]*model.Game, error) {
-	panic(fmt.Errorf("not implemented: ListGames - listGames"))
-}
-
-// Game is the resolver for the game field.
-func (r *queryResolver) Game(ctx context.Context, id string) (*model.Game, error) {
-	panic(fmt.Errorf("not implemented: Game - game"))
+	return r.Games, nil
 }
 
 // Query returns QueryResolver implementation.
