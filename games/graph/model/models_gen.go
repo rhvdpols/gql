@@ -9,5 +9,17 @@ type Game struct {
 
 func (Game) IsEntity() {}
 
+type GameState struct {
+	Ranking []*Player `json:"ranking"`
+}
+
+type Player struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+
 type Query struct {
+}
+
+type Subscription struct {
 }

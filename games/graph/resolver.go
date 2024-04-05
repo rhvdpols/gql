@@ -7,5 +7,6 @@ import "github.com/rhvdpols/gql/games/graph/model"
 // It serves as dependency injection for your app, add any dependencies you require here.
 
 type Resolver struct {
-	Games []*model.Game
+	Games   []*model.Game
+	Players []*model.Player
 }

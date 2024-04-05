@@ -6,3 +6,16 @@ type Game @key(fields: "id") {
 type Query {
   listGames: [Game!]!
 }
+
+type GameState {
+  ranking: [Player!]!
+}
+
+type Player {
+  id: ID!
+  name: String!
+}
+
+type Subscription {
+  getGameState: GameState!
+}

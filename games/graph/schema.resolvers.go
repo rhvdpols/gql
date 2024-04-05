@@ -6,6 +6,8 @@ package graph
 
 import (
 	"context"
+	"fmt"
+	"time"
 
 	"github.com/rhvdpols/gql/games/graph/model"
 )
@@ -15,7 +17,40 @@ func (r *queryResolver) ListGames(ctx context.Context) ([]*model.Game, error) {
 	return r.Games, nil
 }
 
+// GetGameState is the resolver for the getGameState field.
+func (r *subscriptionResolver) GetGameState(ctx context.Context) (<-chan *model.GameState, error) {
+	ch := make(chan *model.GameState)
+
+	go func() {
+		ticker := time.NewTicker(500 * time.Millisecond)
+
+		i := 0
+		for {
+			i++
+			select {
+			case <-ctx.Done():
+				fmt.Println("Client closed connection")
+				return
+			case <-ticker.C:
+				order := determineOrder(i)
+				ch <- &model.GameState{
+					Ranking: []*model.Player{
+						r.Players[order[0]],
+						r.Players[order[1]],
+						r.Players[order[2]],
+					},
+				}
+			}
+		}
+	}()
+	return ch, nil
+}
+
 // Query returns QueryResolver implementation.
 func (r *Resolver) Query() QueryResolver { return &queryResolver{r} }
 
+// Subscription returns SubscriptionResolver implementation.
+func (r *Resolver) Subscription() SubscriptionResolver { return &subscriptionResolver{r} }
+
 type queryResolver struct{ *Resolver }
+type subscriptionResolver struct{ *Resolver }
